@@ -1,0 +1,61 @@
+
+# Development Journal
+
+## 📌 Project Context
+This document captures all references, Azure PowerShell commands, and infrastructure setup notes for the **Azure IaC PoC** project.
+
+---
+
+## 📚 References Used
+
+1. **Azure ARM Template Documentation**  
+   https://learn.microsoft.com/en-us/azure/azure-resource-manager/templates/overview  
+2. **Deploy to Azure Button**  
+   https://learn.microsoft.com/en-us/azure/azure-resource-manager/templates/deploy-to-azure-button  
+3. **Azure PowerShell**  
+   https://learn.microsoft.com/en-us/powershell/azure/new-azureps-module-az  
+
+4. **GitHub Docs: Pushing Changes**  
+   https://docs.github.com/en/repositories/creating-and-managing-repositories/adding-a-file-to-a-repository
+
+---
+
+## 💻 Azure PowerShell Commands Used
+
+**Note:** In this PoC, no advanced PowerShell scripts were used for deployment because the focus was to deploy via the "Deploy to Azure" button with ARM templates.  
+However, here’s an example snippet to connect to Azure and ensure the environment is set up:
+
+```powershell
+# Login to Azure
+Connect-AzAccount
+
+# Check available subscriptions
+Get-AzSubscription
+
+# Set the context to the correct subscription
+Set-AzContext -SubscriptionId "<your-subscription-id>"
+
+# Example: create a Resource Group (if needed)
+New-AzResourceGroup -Name "PoC-ResourceGroup" -Location "eastus"
+```
+
+**Note:** If your environment requires advanced PowerShell provisioning (e.g., KeyVaults, policies, managed identities), document them here.
+
+---
+
+## 📝 Additional Notes / Deployment Observations
+
+- The **Deploy to Azure** button requires publicly accessible raw file links (raw.githubusercontent.com).  
+- For private repositories, consider using **Azure Pipelines** or **GitHub Actions** for deploying ARM templates securely.  
+- No additional infrastructure (e.g., VNET, KeyVault, etc.) was pre-provisioned via PowerShell for this PoC.  
+- No external modules or third-party scripts were used.
+
+---
+
+## ⚠️ Security Note
+- The PoC was developed in a sandbox Azure subscription.  
+- No production resources were impacted.
+
+---
+
+*End of File*
